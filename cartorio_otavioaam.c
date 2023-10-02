@@ -67,7 +67,7 @@ int consulta()
 	char cpf[40];
 	char conteudo[200];
 	
-	printf("Digite o CPF a ser consultado: ");
+	printf("Digite o CPF a ser consultado: "); //recebendo qual usuario vai ser consultado
 	scanf("%s",cpf);
 	
 	FILE *file;
@@ -97,7 +97,6 @@ int deletar()
 	
 	remove(cpf);
 	
-	
 	//para caso não exista o usuário, o sistema vai dar uma mensagem
 	FILE *file; //acessa a biblioteca e procura o arquivo
 	file = fopen(cpf,"r"); // acha o arquivo e lê (r)
@@ -107,6 +106,21 @@ int deletar()
 		printf("Esse usuario não existe no sistema. \n");
 		system("pause");
 	}
+	
+	else
+	{
+		fclose(file);
+		remove(cpf);
+		FILE *file;	
+		file = fopen(cpf,"r");
+		if(file == NULL)
+		{
+			printf("Usuário deletado com sucesso!.\n");
+			system("pause");
+		}
+	}
+
+	fclose(file);
 	
 		
 }
